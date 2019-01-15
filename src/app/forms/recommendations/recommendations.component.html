@@ -1,0 +1,29 @@
+<div>
+  <h3 class="mb-4 form-heading">What are you looking for?</h3>
+  <form class="mb-3" [formGroup]="recommendationForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <input type="text"
+        formControlName="skill"
+        [ngbTypeahead]="searchSkill"
+        class="form-control"
+        placeholder="eg. hairdresser">
+    </div>
+    <div class="form-group where-holder">
+      <input type="text"
+        formControlName="location"
+        [ngbTypeahead]="searchLocation"
+        class="form-control"
+        placeholder="Where?">
+      <div class="location-checkbox">
+        <label class="form-check-label">Any location 
+          <div class="switch">
+            <input formControlName="isLocation" type="checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </div>
+        </label>
+      </div>
+    </div>
+    <button type="submit" [disabled]="recommendationForm.invalid" class="btn btn-success btn-block">Get Recommendations</button>
+  </form>
+  <p class="text-center hint">Any skill. Anywhere. FREE. Direct. No Middleman.</p>
+</div>
